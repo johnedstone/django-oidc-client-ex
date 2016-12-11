@@ -3,14 +3,13 @@ from unipath import Path
 
 BASE_DIR = Path(__file__).ancestor(2)
 
-#SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(32))
-
-#SECRET_KEY = SECRET_KEY
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'myprivatekey-use-os-var-in-prd')
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
+ADMIN_URL = os.environ.get('ADMIN_URL', 'admin')
 
 INTERNAL_IPS = ['127.0.0.1',]
 
@@ -22,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # apps
     'debug_toolbar',
     'myapp',
     'djangooidc',
@@ -33,7 +33,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -82,14 +82,13 @@ STATIC_ROOT = BASE_DIR.child('collect_static')
 
 SITE_ID = 1
 
-ADMIN_URL = os.environ.get('ADMIN_URL', 'admin')
-
-
-# Used to go directly to the OP 
-#LOGIN_URL='myproject_login'
+# Start: Used to go directly to the OP 
+# LOGIN_URL='myproject_login'
 OP_NAME = os.environ.get('OP_NAME')
-LOGIN_URL='openid'
-#LOGIN_REDIRECT_URL = 'myapp:private'
+# Some day figure out how to do this with URL Namespace
+LOGIN_URL = '/openid/openid/{}'.format(OP_NAME)
+# LOGIN_REDIRECT_URL = 'myapp:private'
+# End: Used to go directly to the OP 
 
 # djangooidc
 AUTHENTICATION_BACKENDS = [
