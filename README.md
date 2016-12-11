@@ -5,6 +5,6 @@
 ### Purpose ###
 - Demonstrates using OpenID Connect Client with django
 
-#### To do in order to get to django 1.10 ####
+### To do in order to get to django 1.10 ###
 - django-braces has a url problem
 - and djangooidc has a warning
