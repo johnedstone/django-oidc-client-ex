@@ -82,6 +82,9 @@ STATIC_ROOT = BASE_DIR.child('collect_static')
 
 SITE_ID = 1
 
+# 30 min
+SESSION_COOKIE_AGE = 60 * 30
+
 # Start: Used to go directly to the OP 
 # LOGIN_URL='myproject_login'
 OP_NAME = os.environ.get('OP_NAME')
