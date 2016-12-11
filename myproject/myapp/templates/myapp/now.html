@@ -4,17 +4,7 @@
 
 {% block page_header %}
 <div class="page-header">
-    <h4>Current Time and Date
-        <small>
-            {% if user.is_authenticated %}
-            Private
-            {% else %}
-            Publicly available
-            {% endif %}
-
-        </small>
-    </h4>
-
+    <h4>Current Time and Date</h4>
 </div>
 {% endblock page_header %}
 
@@ -24,10 +14,8 @@
         <div class="col-md-4">
           <h4>Information</h4>
           <div class="alert alert-success" role="alert"><strong>Datetime: </strong>{{ now }}</div>
-          {% if user.is_authenticated %}
-          <div class="alert alert-info" role="alert"><strong>user: </strong>{{ user }}</div>
-          <div class="alert alert-info" role="alert"><strong>email: </strong>{{ user.email }}</div>
-          {% endif %}
+          {% block private_content %}
+          {% endblock private_content %}
         </div>
       </div>
 {% endblock content %}

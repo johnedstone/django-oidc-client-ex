@@ -20,7 +20,7 @@ class CurrentDatetime(TemplateView):
         return context
 
 class Private(LoginRequiredMixin, TemplateView):
-    template_name = "myapp/now.html"
+    template_name = "myapp/private.html"
 
 
     def get(self, request):
