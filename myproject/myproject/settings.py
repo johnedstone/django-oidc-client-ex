@@ -3,7 +3,7 @@ from unipath import Path
 
 BASE_DIR = Path(__file__).ancestor(2)
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'myprivatekey-use-os-var-in-prd')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
