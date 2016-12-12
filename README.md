@@ -1,6 +1,6 @@
 ### Notes ###
 - Currently using python 3.4 and django 1.9
-- Based on https://github.com/jhuapl-boss/django-oidc
+- Based on https://github.com/jhuapl-boss/django-oidc (python 3.x) which in turn is based on https://github.com/marcanpilami/django-oidc (python 2.x).  Behind the scenes, it uses Roland Hedberg's great pyoidc library.
 
 ### Purpose ###
 - Demonstrates using OpenID Connect Client with django
