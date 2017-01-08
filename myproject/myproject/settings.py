@@ -1,17 +1,16 @@
 import os
+import hashlib
 from unipath import Path
 
 BASE_DIR = Path(__file__).ancestor(2)
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+     hashlib.sha1(os.urandom(128)).hexdigest(), 
+)
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
-
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-
 ADMIN_URL = os.environ.get('ADMIN_URL', 'admin')
-
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = os.environ.get('INTERNAL_IPS', 'localhost,127.0.0.1').split(',') 
 
 INSTALLED_APPS = [
     'django.contrib.admin',

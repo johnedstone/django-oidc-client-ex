@@ -10,4 +10,5 @@
 - and djangooidc has a warning that needs to be resolved, for django 1.10: django.conf.urls.patterns() is deprecated 
 
 ### Next step ###
-- Develop this example for PaaS, e.g. OpenShift
+- Notes for Openshift
+    - Copied wsgi.py up one level to be compatible with Openshift
