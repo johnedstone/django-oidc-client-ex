@@ -4,7 +4,7 @@
 
 ### Purpose ###
 - Demonstrates using OpenID Connect Client with django
-- This code base works both on a tradition webserver as well as Origin/Openshift
+- This code base works both on a tradition webserver as well as Origin/Openshift PaaS
 
 ### To do in order to get to django 1.10 ###
 - django-braces has a url problem - maybe the same as djangooidc, below
@@ -16,7 +16,7 @@ Notes for Openshift:
     - Copied wsgi.py up one level to be compatible with Origin/Openshift
     - Example creating a new app:
 
-    ```
+```
 oc new-app -f openshift/templates/django.yaml --params="\
 SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL},\
 CONTEXT_DIR=${CONTEXT_DIR},\
@@ -36,4 +36,4 @@ CLIENT_ID=${CLIENT_ID},\
 CLIENT_SECRET=${CLIENT_SECRET},\
 REDIRECT_URIS=${REDIRECT_URIS},\
 POST_LOGOUT_REDIRECT_URIS=${POST_LOGOUT_REDIRECT_URIS}"
-    ```
+```
