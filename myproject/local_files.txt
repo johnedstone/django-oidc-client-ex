@@ -1,7 +1,8 @@
 local_pip/alabaster-0.7.9-py2.py3-none-any.whl
 local_pip/Beaker-1.8.1.tar.gz
 #local_pip/cffi-1.9.1-cp34-cp34m-manylinux1_x86_64.whl
-local/cffi-1.9.1.tar.gz
+#local_pip/cffi-1.9.1-cp34-cp34m-manylinux1_x86_64.whl
+cffi
 local_pip/cookies-2.2.1-py2.py3-none-any.whl
 local_pip/cryptography-1.7.1.tar.gz
 local_pip/Django-1.9-py2.py3-none-any.whl
