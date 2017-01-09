@@ -1,5 +1,6 @@
-Django==1.9
-django-braces==1.10.0
-django-debug-toolbar==1.6
-git+https://github.com/jhuapl-boss/django-oidc.git
-Unipath==1.1
+#Django==1.9
+#django-braces==1.10.0
+#django-debug-toolbar==1.6
+#git+https://github.com/jhuapl-boss/django-oidc.git
+#Unipath==1.1
+-r local_pip/local_files.txt
