@@ -32,3 +32,9 @@ class Private(LoginRequiredMixin, TemplateView):
         context['now'] =  datetime.datetime.now()
 
         return context
+
+def my_custom_page_not_found_view():
+    return render_to_response('404.html', {}, context_instance=RequestContext(request)) 
+
+def my_custom_error_view():
+    return render_to_response('500.html', {}, context_instance=RequestContext(request)) 
