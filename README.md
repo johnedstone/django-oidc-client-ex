@@ -13,9 +13,9 @@
 ### Origin/Openshift ###
 Notes for Openshift:
 
-    - Based on Openshift Django Example [link](https://github.com/openshift/django-ex)
-    - Copied wsgi.py up one level to be compatible with Origin/Openshift
-    - Example creating a new app:
+- Based on Openshift Django Example [link](https://github.com/openshift/django-ex)
+- Copied wsgi.py up one level to be compatible with Origin/Openshift
+- Example creating a new app:
 
 ```
 oc new-app -f openshift/templates/django.yaml --params="\
