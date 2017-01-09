@@ -102,7 +102,8 @@ OP_NAME = os.environ.get('OP_NAME')
 
 BEHAVIOR = {
     "response_type": "code",
-    "scope": os.environ.get('SCOPE').split(',')
+    # "scope": os.environ.get('SCOPE').split(',')
+    "scope": os.environ.get('SCOPE').split() # origin/openshift can't handle comma
 }
 
 PROVIDER_INFO = {

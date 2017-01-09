@@ -18,7 +18,11 @@ Notes for Openshift:
 - Example creating a new app:
 
 ```
-oc new-app -f openshift/templates/django.yaml --params="\
+oc secrets new-sshauth sshsecret --ssh-privatekey=$HOME/<path to key>
+oc secret add serviceaccount/builder secrets/sshsecret
+
+
+oc new-app -f openshift/templates/django.yaml --param="\
 SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL},\
 CONTEXT_DIR=${CONTEXT_DIR},\
 APPLICATION_DOMAIN=${APPLICATION_DOMAIN},\

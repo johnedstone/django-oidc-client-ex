@@ -58,7 +58,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: ${NAMESPACE}
-          name: rhscl/python-34-rhel7:latest
+          name: python:3.4
         env:
         - name: PIP_PROXY
           value: ${PIP_PROXY}
