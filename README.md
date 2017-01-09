@@ -14,6 +14,7 @@
 Notes for Openshift:
 
 - *$Current Issue: cffi-1.9.1-cp34-cp34m-manylinux1_x86_64.whl is not a supported wheel on this platform*
+- * No package 'libffi' found *
 - Based on Openshift Django Example [link](https://github.com/openshift/django-ex)
 - Copied wsgi.py up one level to be compatible with Origin/Openshift
 - Example creating a new app:
