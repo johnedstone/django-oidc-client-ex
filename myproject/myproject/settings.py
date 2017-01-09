@@ -125,4 +125,5 @@ OIDC_PROVIDERS = {
         'provider_info': PROVIDER_INFO,
     },
 }
-SECURE_SSL_REDIRECT = True
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
