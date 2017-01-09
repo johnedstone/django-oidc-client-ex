@@ -11,7 +11,7 @@ export SECRET_KEY='your_secret_key' # Django SECRET_KEY, not needed for localhos
 export ADMIN_URL=your_custom_adm_url # default is admin
 
 export OP_NAME=your-creative-name-for-your-OP-config
-export SCOPE='openid,profile,email' # Provided by your OP, this is a sample
+export SCOPE='openid profile email' # Provided by your OP, this is a sample
 export AUTHORIZATION_ENDPOINT='https://op-fqdn/...' # Provided by your OP
 export TOKEN_ENDPOINT='https://op-fqdn/...' # Provided by your OP
 export USERINFO_ENDPOINT='https://op-fqdn/...' # Provided by your OP
