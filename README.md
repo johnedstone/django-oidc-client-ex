@@ -4,7 +4,7 @@
 
 ### Purpose ###
 - Demonstrates using OpenID Connect Client with django
-- This code base works both on a tradition webserver as well as Origin/Openshift PaaS
+- Code works on tradition webserver.  Notes on Origin/Openshift (Paas) below.
 
 ### To do in order to get to django 1.10 ###
 - django-braces has a url problem - maybe the same as djangooidc, below
@@ -15,6 +15,7 @@ Notes for Openshift:
 
 - *Current Issue: cffi-1.9.1-cp34-cp34m-manylinux1_x86_64.whl is not a supported wheel on this platform*
 - *No package 'libffi' found*
+- Currently building image witl libffi and testing on S2I and origin
 - Based on Openshift Django Example [link](https://github.com/openshift/django-ex)
 - Copied wsgi.py up one level to be compatible with Origin/Openshift
 - Example creating a new app:
