@@ -62,6 +62,8 @@ objects:
         env:
         - name: PIP_PROXY
           value: ${PIP_PROXY}
+        - name: PIP_INDEX_URL
+          value: ${PIP_INDEX_URL}
     output:
       to:
         kind: ImageStreamTag
@@ -192,6 +194,10 @@ parameters:
 - name: PIP_PROXY
   displayName: PIP PROXY
   description: PIP environment variable for proxy
+- name: PIP_INDEX_URL
+  displayName: PIP INDEX URL
+  description: PIP Index URL, as origin/openshift is having trouble getting files, 
+    though a webserver has no trouble pulling these.
 - name: APP_CONFIG
   displayName: Application configuration file path
   description: Relative path to Gunicorn configuration file (optional)
