@@ -21,3 +21,7 @@ db.sqlite3
 collect_static/
 
 .nfs*
+
+# custom
+s2i
+sti

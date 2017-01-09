@@ -3,6 +3,7 @@ FROM centos/python-34-centos7
 MAINTAINER johnedstone <johnedstone@gmail.com>
 USER root
 RUN  yum --nogpgcheck install -y \
-    libffi \
+    libffi libffi-devel \
     &&  yum --enablerepo=\* clean all
 USER 1001
+#    libffi libffi-devel openssl-devel \
