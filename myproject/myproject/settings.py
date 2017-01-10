@@ -36,6 +36,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -119,5 +120,9 @@ OIDC_PROVIDERS = {
         'provider_info': PROVIDER_INFO,
     },
 }
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+# if not DEBUG:
+#    SECURE_SSL_REDIRECT = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# vim: ai et ts=4 sw=4 sts=4
