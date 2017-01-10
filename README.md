@@ -4,26 +4,23 @@
 
 ### Purpose ###
 - Demonstrates using OpenID Connect Client with django
-- Code works on tradition webserver.  Notes on Origin/Openshift (Paas) below.
+- Code works on tradition webserver as well as Origin/Openshift (PaaS) below.
 
 ### To do in order to get to django 1.10 ###
 - django-braces has a url problem - maybe the same as djangooidc, below
 - and djangooidc has a warning that needs to be resolved, for django 1.10: django.conf.urls.patterns() is deprecated 
 
-### Origin/Openshift ###
-Notes for Openshift:
+### Origin/Openshift Notes ###
 
-- *Current Issue: cffi-1.9.1-cp34-cp34m-manylinux1_x86_64.whl is not a supported wheel on this platform*
-- *No package 'libffi' found*
-- Currently building image witl libffi and testing on S2I and origin
-- Based on Openshift Django Example [link](https://github.com/openshift/django-ex)
+- Custom image was needed, see *docker-origin-openshift* folder 
+- _Currently working on collectstatic and whitenoise_
+- This project has extended the Openshift Django Example [link](https://github.com/openshift/django-ex) to demonstrate OIDC authentication
 - Copied wsgi.py up one level to be compatible with Origin/Openshift
-- Example creating a new app:
 
 ```
+# Creating a new project in Origin/Openshift
 oc secrets new-sshauth sshsecret --ssh-privatekey=$HOME/<path to key>
 oc secret add serviceaccount/builder secrets/sshsecret
-
 
 oc new-app -f openshift/templates/django.yaml --param="\
 SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL},\
