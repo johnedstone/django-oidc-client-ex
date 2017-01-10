@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-source /home/vagrant/configurations/django-oidc-client-ex/django_oidc_client_ex.localhost.docker.sh
+source /home/vagrant/configurations/django-oidc-client-ex/django_oidc_client_ex.prd.docker.sh
 
 docker run --rm -p 8080:8080 \
+-e DEBUG="${DEBUG}" \
+-e SECRET_KEY="${SECRET_KEY}" \
+-e ALLOWED_HOSTS="${ALLOWED_HOSTS}" \
+-e ADMIN_URL="${ADMIN_URL}" \
 -e OP_NAME="${OP_NAME}" \
 -e SCOPE="${SCOPE}" \
 -e AUTHORIZATION_ENDPOINT="${AUTHORIZATION_ENDPOINT}" \
