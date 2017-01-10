@@ -1,4 +1,11 @@
-#### Adding missing libffi rpm ####
+#### Custom Docker images ####
+
+For Origin/Openshift individual pip packages needed to be install as root
+
+- cffi
+- cryptography
+
+#### Notes on docker build are below ####
 
 ```
 # S2I
@@ -23,7 +30,4 @@ sudo docker push <internal docker IP>:5000/openshift/python34-libffi:latest
 
 oc get is -n openshift |egrep libffi # verify
 
-
-# do origin new-project/new-app
-# delete local pip files
 ```
