@@ -3,6 +3,7 @@ django-braces==1.10.0
 django-debug-toolbar==1.6
 git+https://github.com/jhuapl-boss/django-oidc.git
 Unipath==1.1
+local_pip/cffi-1.9.1.tar.gz
 
 # Origin/Openshift having trouble pull files, so let's try local
 #-r local_files.txt
