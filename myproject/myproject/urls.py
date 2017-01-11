@@ -10,7 +10,7 @@ handler500 = 'myapp.views.my_custom_error_view'
 
 urlpatterns = [
     url(r'^{}/'.format(settings.ADMIN_URL), admin.site.urls),
-    url(r'/health', lambda request:HttpResponse(status=200)),
+    url(r'^health$', lambda request:HttpResponse(status=200)),
 
     url(r'^logout/$', django_logout,
          {'next_page': '/'},
