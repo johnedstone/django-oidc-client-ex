@@ -6,6 +6,21 @@
 - Demonstrates using OpenID Connect Client with django
 - Code works on tradition webserver as well as Origin/Openshift (PaaS) below.
 
+### Notes on OIDC ###
+- References: [link](http://openid.net/connect/)
+- What do you need to provide to the OpenID Provider (OP)?
+    - Redirection URI(s) 
+    - Scope, e.g. openid profile email auth_web
+- The OP will then provide you with the following:
+    - Client ID
+    - Client Secret
+    - Authorization Endpoint
+    - Token Endpoint
+    - Userinfo Endpoint
+    - Issuer
+    - JWKS URI
+
+
 ### To do in order to get to django 1.10 ###
 - django-braces has a url problem - maybe the same as djangooidc, below
 - and djangooidc has a warning that needs to be resolved, for django 1.10: django.conf.urls.patterns() is deprecated 
