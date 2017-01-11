@@ -1,9 +1,6 @@
-#### Custom Docker images ####
+#### Custom Docker image ####
 
-For Origin/Openshift individual pip packages needed to be install as root
-
-- cffi
-- cryptography
+**For Origin/Openshift** two pip packages needed to be installed in sequence as root, as well as 2 rpms.  See [Dockerfile](https://github.com/johnedstone/django-oidc-client-ex/blob/master/docker-origin-openshift/Dockerfile)
 
 #### Notes on docker build are below ####
 
