@@ -13,7 +13,6 @@
 ### Origin/Openshift Notes ###
 
 - Custom image was needed, see *docker-origin-openshift* folder 
-- _Currently working on /health url_
 - This project has extended the Openshift Django Example [link](https://github.com/openshift/django-ex) to demonstrate OIDC authentication
 - Copied wsgi.py up one level to be compatible with Origin/Openshift
 

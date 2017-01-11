@@ -16,11 +16,6 @@ urlpatterns = [
          {'next_page': '/'},
          name='myproject_logout'),
 
-    #url(r'login/$',
-    #    RedirectView.as_view(pattern_name='openid_with_op_name', permanent=False),
-    #    {'op_name': settings.OP_NAME},
-    #    name='myproject_login'),
-
     url(r'openid/', include('djangooidc.urls')),
 
     url(r'^myapp/', include('myapp.urls', namespace='myapp')),

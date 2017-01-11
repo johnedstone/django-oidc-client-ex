@@ -116,7 +116,7 @@ objects:
             timeoutSeconds: 3
             initialDelaySeconds: 3
             httpGet:
-              path: /
+              path: /myapp/public/
               port: 8080
           livenessProbe:
             timeoutSeconds: 3

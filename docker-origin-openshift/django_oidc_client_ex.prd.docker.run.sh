@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+# run as sudo
+source /home/vagrant/django-oidc-client-ex/unset_os_vars.sh
 source /home/vagrant/configurations/django-oidc-client-ex/django_oidc_client_ex.prd.docker.sh
 
 docker run --rm -p 8080:8080 \
