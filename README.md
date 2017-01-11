@@ -1,6 +1,6 @@
 ### Purpose ###
-- Demonstrates using OpenID Connect Client with the python (django)
-- Code works on tradition webserver as well as Origin/Openshift (PaaS) below.
+- Demonstrates using OpenID Connect Client with python (django)
+- Code works on traditional webserver as well as Origin/Openshift (PaaS) below.
 
 ### Notes django-oidc ###
 - Currently using python 3.4 and django 1.9
