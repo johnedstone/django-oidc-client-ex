@@ -115,8 +115,8 @@ OIDC_PROVIDERS = {
         'client_registration': {
             'client_id': os.environ.get('CLIENT_ID', 'unknown_id'),
             'client_secret': os.environ.get('CLIENT_SECRET', 'unknown_secret'),
-            'redirect_uris': os.environ.get('REDIRECT_URIS', 'unknown_uris').split(','),
-            'post_logout_redirect_uris': os.environ.get('POST_LOGOUT_REDIRECT_URIS', 'unknown_post_uris').split(','),
+            'redirect_uris': os.environ.get('REDIRECT_URIS', 'unknown_uris').split(),
+            'post_logout_redirect_uris': os.environ.get('POST_LOGOUT_REDIRECT_URIS', 'unknown_post_uris').split(),
         },
         'provider_info': PROVIDER_INFO,
     },

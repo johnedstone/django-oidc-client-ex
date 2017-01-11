@@ -260,11 +260,11 @@ parameters:
 - name: REDIRECT_URIS
   displayName: REDIRECT_URIS
   description: Redirect URIS set by your pip package,
-    django-oidc, comma separated string
+    django-oidc, space separated string.  Uses the first one in this example.
 - name: POST_LOGOUT_REDIRECT_URIS
   displayName: POST_LOGOUT_REDIRECT_URIS
   description: Post logout redirect URIS set by your pip package,
-    django-oidc, comma separated string, not sure if all OPs use this
+    django-oidc, space separated string, not sure if all OPs use this
 - name: GIT_PROJECT_URL
   displayName: GIT_PROJECT_URL
   description: Link used by web app
