@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-oc new-app -f myproject/openshift/templates/django-origin.yaml --param="\
+oc new-app -f myproject/openshift/templates/django-openshift.yaml --param="\
 SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL},\
 CONTEXT_DIR=${CONTEXT_DIR},\
 APPLICATION_DOMAIN=${APPLICATION_DOMAIN},\

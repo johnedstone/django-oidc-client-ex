@@ -1,0 +1,267 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: django-oidc-client
+  annotations:
+    description: An example Django application using an OIDC Client to authenticate
+    tags: quickstart,python,django,oidc
+    iconClass: icon-python
+labels:
+  template: django-oidc-client
+objects:
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${NAME}
+    annotations:
+      description: Exposes and load balances the application pods
+  spec:
+    ports:
+    - name: web
+      port: 8080
+      targetPort: 8080
+    selector:
+      name: ${NAME}
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: ${NAME}
+  spec:
+    host: ${APPLICATION_DOMAIN}
+    to:
+      kind: Service
+      name: ${NAME}
+    # tls:
+    #   termination: edge
+    #   insecureEdgeTerminationPolicy: Redirect
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: ${NAME}
+    annotations:
+      description: Keeps track of changes in the application image
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: ${NAME}
+    annotations:
+      description: Defines how to build the application
+  spec:
+    source:
+      type: Git
+      git:
+        uri: ${SOURCE_REPOSITORY_URL}
+        ref: ${SOURCE_REPOSITORY_REF}
+      sourceSecret:
+        name: ${GITHUB_WEBHOOK_SECRET}
+      contextDir: ${CONTEXT_DIR}
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          namespace: ${NAMESPACE}
+          name: python34-libffi:latest
+        env:
+        - name: PIP_PROXY
+          value: ${PIP_PROXY}
+        - name: PIP_INDEX_URL
+          value: ${PIP_INDEX_URL}
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${NAME}:latest
+    triggers:
+    - type: ImageChange
+    - type: ConfigChange
+    - type: GitHub
+      github:
+        secret: ${GITHUB_WEBHOOK_SECRET}
+    postCommit:
+      script: './manage.py test'
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata:
+    name: ${NAME}
+    annotations:
+      description: Defines how to deploy the application server
+  spec:
+    strategy:
+      type: Rolling
+    triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - django-oidc-client
+        from:
+          kind: ImageStreamTag
+          name: ${NAME}:latest
+    - type: ConfigChange
+    replicas: 1
+    selector:
+      name: ${NAME}
+    template:
+      metadata:
+        name: ${NAME}
+        labels:
+          name: ${NAME}
+      spec:
+        containers:
+        - name: django-oidc-client
+          image: ' '
+          ports:
+          - containerPort: 8080
+          readinessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 3
+            httpGet:
+              path: /myapp/public/
+              port: 8080
+          livenessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 30
+            httpGet:
+              path: /health
+              port: 8080
+          env:
+          - name: APP_CONFIG
+            value: ${APP_CONFIG}
+          - name: DEBUG
+            value: ${DEBUG}
+          - name: ENABLE_SSL
+            value: ${ENABLE_SSL}
+          - name: ALLOWED_HOSTS
+            value: ${ALLOWED_HOSTS}
+          - name: SECRET_KEY
+            value: ${SECRET_KEY}
+          - name: ADMIN_URL
+            value: ${ADMIN_URL}
+          - name: OP_NAME
+            value: ${OP_NAME}
+          - name: SCOPE
+            value: ${SCOPE}
+          - name: AUTHORIZATION_ENDPOINT
+            value: ${AUTHORIZATION_ENDPOINT}
+          - name: TOKEN_ENDPOINT
+            value: ${TOKEN_ENDPOINT}
+          - name: USERINFO_ENDPOINT
+            value: ${USERINFO_ENDPOINT}
+          - name: ISSUER
+            value: ${ISSUER}
+          - name: JWKS_URI
+            value: ${JWKS_URI}
+          - name: CLIENT_ID
+            value: ${CLIENT_ID}
+          - name: CLIENT_SECRET
+            value: ${CLIENT_SECRET}
+          - name: REDIRECT_URIS
+            value: ${REDIRECT_URIS}
+          - name: POST_LOGOUT_REDIRECT_URIS
+            value: ${POST_LOGOUT_REDIRECT_URIS}
+          resources:
+            limits:
+              memory: ${MEMORY_LIMIT}
+parameters:
+- name: NAME
+  displayName: Name
+  description: The name assigned to all of the frontend objects defined in this template.
+  required: true
+  value: django-oidc-client
+- name: NAMESPACE
+  displayName: Namespace
+  required: true
+  description: The OpenShift Namespace where the ImageStream resides.
+  value: openshift
+- name: MEMORY_LIMIT
+  displayName: Memory limit
+  description: Maximum amount of memory the container can use
+  value: 512Mi
+- name: SOURCE_REPOSITORY_URL
+  displayName: Source repository URL
+  description: The URL of the repository with your application source code
+- name: SOURCE_REPOSITORY_REF
+  displayName: Source repository reference
+  description: Set this to a branch name, tag or other ref of your repository if you
+    are not using the default branch
+- name: CONTEXT_DIR
+  displayName: Context directory
+  description: Set this to the relative path to your project if it is not in the root
+    of your repository
+- name: APPLICATION_DOMAIN
+  displayName: Application hostname
+  description: The exposed hostname that will route to the Django service, if left
+    blank a value will be defaulted.
+- name: GITHUB_WEBHOOK_SECRET
+  displayName: GitHub webhook secret
+  description: A secret string used to configure the GitHub webhook
+  value: sshsecret
+- name: PIP_PROXY
+  displayName: PIP PROXY
+  description: PIP environment variable for proxy
+- name: PIP_INDEX_URL
+  displayName: PIP INDEX URL
+  description: PIP Index URL, as origin/openshift is having trouble getting files, 
+    though a webserver has no trouble pulling these.
+- name: APP_CONFIG
+  displayName: Application configuration file path
+  description: Relative path to Gunicorn configuration file (optional)
+- name: DEBUG
+  displayName: Django Debug settings variable
+  description: Django Debug settings variable. If left unset it will be True
+  value: 'on'
+- name: ENABLE_SSL
+  displayName: ENABLE_SSL
+  description: Added this key/value since SSL for origin/openshift is handled by edge router.
+    The defaults will work for both traditional webserver and origin/openshift
+  value: 'off'
+- name: SECRET_KEY
+  displayName: Djange secret key
+  description: Set this to a long random string
+  generate: expression
+  from: '[\w]{50}'
+- name: ALLOWED_HOSTS
+  displayName: Allowed Hosts
+  description: Allowed host - django setting
+  value: '*'
+- name: ADMIN_URL
+  displayName: Django admin URL
+  value: admin
+- name: OP_NAME
+  displayName: OP Name
+  description: Name used for your configuration
+  value: your_specific_custom_oidc_config
+- name: SCOPE
+  displayName: SCOPE
+  description: OIDC scope, provided by your OP
+- name: AUTHORIZATION_ENDPOINT
+  displayName: AUTHORIZATION ENDPOINT
+  description: Authorization Endpoint, provided by your OP
+- name: TOKEN_ENDPOINT
+  displayName: TOKEN_ENDPOINT 
+  description: TOKEN_ENDPOINT provided by your OP
+- name: USERINFO_ENDPOINT
+  displayName: USERINFO_ENDPOINT
+  description: USERINFO_ENDPOINT provided by your OP
+- name: ISSUER
+  displayName: ISSUER
+  description: ISSUER FQDN of your OP
+- name: JWKS_URI
+  displayName: JWKS_URI
+  description: JWKS_URI provided by your OP
+- name: CLIENT_ID
+  displayName: CLIENT_ID
+  description: CLIENT_ID provided by your OP
+- name: CLIENT_SECRET
+  displayName: CLIENT_SECRET
+  description: CLIENT_SECRET provided by your OP
+- name: REDIRECT_URIS
+  displayName: REDIRECT_URIS
+  description: Redirect URIS set by your pip package,
+    django-oidc, comma separated string
+- name: POST_LOGOUT_REDIRECT_URIS
+  displayName: POST_LOGOUT_REDIRECT_URIS
+  description: Post logout redirect URIS set by your pip package,
+    django-oidc, comma separated string, not sure if all OPs use this
+
+# vim: ai et ts=2 sts=2 sw=2
