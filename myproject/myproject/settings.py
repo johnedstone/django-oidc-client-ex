@@ -52,6 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'myapp.context_processors.external_urls',
             ],
         },
     },
@@ -126,5 +127,6 @@ if not DEBUG and ENABLE_SSL:
    SECURE_SSL_REDIRECT = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+GIT_PROJECT_URL = os.environ.get('GIT_PROJECT_URL', '#')
 
 # vim: ai et ts=4 sw=4 sts=4

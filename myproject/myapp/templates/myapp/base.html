@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'myapp:public' %}">Public</a></li>
             <li><a href="{% url 'myapp:private' %}">Private</a></li>
+            <li><a href="{{ GIT_PROJECT_URL }}">GIT&nbsp;Repo</a></li>
             {% if user.is_authenticated %}<li><a href="{% url 'myproject_logout' %}">Log out</a></li>{% endif %}
           </ul>
         </div><!--/.nav-collapse -->

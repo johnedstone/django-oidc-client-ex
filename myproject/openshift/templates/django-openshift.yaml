@@ -263,5 +263,9 @@ parameters:
   displayName: POST_LOGOUT_REDIRECT_URIS
   description: Post logout redirect URIS set by your pip package,
     django-oidc, comma separated string, not sure if all OPs use this
+- name: GIT_PROJECT_URL
+  displayName: GIT_PROJECT_URL
+  description: Link used by web app
+  value: '#'
 
 # vim: ai et ts=2 sts=2 sw=2
