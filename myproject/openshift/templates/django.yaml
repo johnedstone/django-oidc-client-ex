@@ -232,7 +232,7 @@ parameters:
   description: Name used for your configuration
   value: your_specific_custom_oidc_config
 - name: SCOPE
-  displayName: Scope
+  displayName: SCOPE
   description: OIDC scope, provided by your OP
 - name: AUTHORIZATION_ENDPOINT
   displayName: AUTHORIZATION ENDPOINT
