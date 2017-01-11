@@ -122,7 +122,7 @@ OIDC_PROVIDERS = {
 }
 
 ENABLE_SSL = os.environ.get('ENABLE_SSL', 'on') == 'on' # Added for origin/openshift
-if not DEBUG and not ENABLE_SSL:
+if not DEBUG and ENABLE_SSL:
    SECURE_SSL_REDIRECT = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
