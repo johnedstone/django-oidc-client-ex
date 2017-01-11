@@ -13,13 +13,7 @@
 ### Origin/Openshift Notes ###
 
 - Custom image was needed, see *docker-origin-openshift* folder 
-- _Currently working on /health url and 
-
-```
-https://docs.openshift.com/container-platform/3.3/architecture/core_concepts/routes.html#secured-routes
-oc patch route/cakephp-example -p '{"spec":{"tls":{"termination":"edge","insecureEdgeTerminationPolicy":"Redirect"}}}'
-```
-    
+- _Currently working on /health url_
 - This project has extended the Openshift Django Example [link](https://github.com/openshift/django-ex) to demonstrate OIDC authentication
 - Copied wsgi.py up one level to be compatible with Origin/Openshift
 

@@ -31,6 +31,9 @@ objects:
     to:
       kind: Service
       name: ${NAME}
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
 - kind: ImageStream
   apiVersion: v1
   metadata:
@@ -126,6 +129,8 @@ objects:
             value: ${APP_CONFIG}
           - name: DEBUG
             value: ${DEBUG}
+          - name: ENABLE_SSL
+            value: ${ENABLE_SSL}
           - name: ALLOWED_HOSTS
             value: ${ALLOWED_HOSTS}
           - name: SECRET_KEY
@@ -205,6 +210,11 @@ parameters:
   displayName: Django Debug settings variable
   description: Django Debug settings variable. If left unset it will be True
   value: 'on'
+- name: ENABLE_SSL
+  displayName: ENABLE_SSL
+  description: Added this key/value since SSL for origin/openshift is handled by edge router.
+    The defaults will work for both traditional webserver and origin/openshift
+  value: 'off'
 - name: SECRET_KEY
   displayName: Djange secret key
   description: Set this to a long random string
