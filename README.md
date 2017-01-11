@@ -1,10 +1,10 @@
-### Notes ###
+### Purpose ###
+- Demonstrates using OpenID Connect Client with the python (django)
+- Code works on tradition webserver as well as Origin/Openshift (PaaS) below.
+
+### Notes django-oidc ###
 - Currently using python 3.4 and django 1.9
 - Based on https://github.com/jhuapl-boss/django-oidc (python 3.x) which in turn is based on https://github.com/marcanpilami/django-oidc (python 2.x).  Behind the scenes, it uses Roland Hedberg's great pyoidc library.
-
-### Purpose ###
-- Demonstrates using OpenID Connect Client with django
-- Code works on tradition webserver as well as Origin/Openshift (PaaS) below.
 
 ### Notes on OIDC ###
 - Reference: [link](http://openid.net/connect/)
