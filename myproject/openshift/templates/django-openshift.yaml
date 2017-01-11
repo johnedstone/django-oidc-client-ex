@@ -159,6 +159,8 @@ objects:
             value: ${REDIRECT_URIS}
           - name: POST_LOGOUT_REDIRECT_URIS
             value: ${POST_LOGOUT_REDIRECT_URIS}
+          - name: GIT_PROJECT_URL
+            value: ${GIT_PROJECT_URL} 
           resources:
             limits:
               memory: ${MEMORY_LIMIT}

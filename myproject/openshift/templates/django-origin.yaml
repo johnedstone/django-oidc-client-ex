@@ -159,6 +159,8 @@ objects:
             value: ${REDIRECT_URIS}
           - name: POST_LOGOUT_REDIRECT_URIS
             value: ${POST_LOGOUT_REDIRECT_URIS}
+          - name: GIT_PROJECT_URL
+            value: ${GIT_PROJECT_URL} 
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
@@ -267,6 +269,5 @@ parameters:
   displayName: GIT_PROJECT_URL
   description: Link used by web app
   value: '#'
-
 
 # vim: ai et ts=2 sts=2 sw=2
