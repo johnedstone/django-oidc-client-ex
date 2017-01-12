@@ -28,7 +28,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,7 +125,11 @@ ENABLE_SSL = os.environ.get('ENABLE_SSL', 'on') == 'on' # Added for origin/opens
 if not DEBUG and ENABLE_SSL:
    SECURE_SSL_REDIRECT = True
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 GIT_PROJECT_URL = os.environ.get('GIT_PROJECT_URL', '#')
+
+ENABLE_WHITENOISE = os.environ.get('ENABLE_WHITENOISE', 'off') == 'on' # Added for origin/openshift
+if ENABLE_WHITENOISE:
+    MIDDLEWARE_CLASSES.append('whitenoise.middleware.WhiteNoiseMiddleware')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # vim: ai et ts=4 sw=4 sts=4
