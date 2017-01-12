@@ -274,6 +274,6 @@ parameters:
 - name: ENABLE_WHITENOISE
   displayName: ENABLE_WHITENOISE
   description: Enable whitenoise for PaaS
-  value: on 
+  value: 'on' 
 
 # vim: ai et ts=2 sts=2 sw=2
