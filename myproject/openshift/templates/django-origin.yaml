@@ -67,6 +67,8 @@ objects:
           value: ${PIP_PROXY}
         - name: PIP_INDEX_URL
           value: ${PIP_INDEX_URL}
+        - name: ENABLE_WHITENOISE
+          value: ${ENABLE_WHITENOISE} 
     output:
       to:
         kind: ImageStreamTag
@@ -161,8 +163,6 @@ objects:
             value: ${POST_LOGOUT_REDIRECT_URIS}
           - name: GIT_PROJECT_URL
             value: ${GIT_PROJECT_URL} 
-          - name: ENABLE_WHITENOISE
-            value: ${ENABLE_WHITENOISE} 
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
