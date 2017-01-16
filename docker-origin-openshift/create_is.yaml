@@ -1,0 +1,7 @@
+kind: ImageStream
+apiVersion: v1
+metadata:
+  name: python34-libffi
+  namespace: openshift
+spec:
+  dockerImageRepository: <local-docker-registry-fqdn>/custom-images/python34-libffi
