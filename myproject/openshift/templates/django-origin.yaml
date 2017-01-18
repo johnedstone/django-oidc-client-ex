@@ -163,6 +163,8 @@ objects:
             value: ${POST_LOGOUT_REDIRECT_URIS}
           - name: GIT_PROJECT_URL
             value: ${GIT_PROJECT_URL} 
+          - name: TIP_OF_THE_DAY
+            value: ${TIP_OF_THE_DAY} 
           resources:
             limits:
               memory: ${MEMORY_LIMIT}
@@ -271,6 +273,9 @@ parameters:
   displayName: GIT_PROJECT_URL
   description: Link used by web app
   value: '#'
+- name: TIP_OF_THE_DAY
+  displayName: TIP_OF_THE_DAY
+  description: String of text to display on the home page
 - name: ENABLE_WHITENOISE
   displayName: ENABLE_WHITENOISE
   description: Enable whitenoise for PaaS

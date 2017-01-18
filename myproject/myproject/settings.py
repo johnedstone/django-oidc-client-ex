@@ -126,6 +126,7 @@ if not DEBUG and ENABLE_SSL:
    SECURE_SSL_REDIRECT = True
 
 GIT_PROJECT_URL = os.environ.get('GIT_PROJECT_URL', '#')
+TIP_OF_THE_DAY = os.environ.get('TIP_OF_THE_DAY', '')
 
 ENABLE_WHITENOISE = os.environ.get('ENABLE_WHITENOISE', 'off') == 'on' # Added for origin/openshift
 if ENABLE_WHITENOISE:

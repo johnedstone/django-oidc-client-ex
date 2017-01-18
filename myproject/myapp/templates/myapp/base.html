@@ -64,11 +64,12 @@
     {% block content %}
     {% endblock content %}
 
-      <hr>
+    {% if TIP_OF_THE_DAY %}<div class=text-muted>{{ TIP_OF_THE_DAY }}</div>{% endif %}
+    <hr>
 
-      <footer class="col-md-4">
+    <footer class="col-md-4">
         <p>&copy; 2017</p>
-      </footer>
+    </footer>
     </div>
     </div> <!-- /container -->
 
@@ -78,4 +79,7 @@
 
   </body>
 </html>
+{% comment %}
+# vim: ai et sw=4 ts=4 sts=4 nu
+{% endcomment %}
 
