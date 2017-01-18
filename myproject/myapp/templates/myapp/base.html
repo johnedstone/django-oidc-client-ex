@@ -64,7 +64,7 @@
     {% block content %}
     {% endblock content %}
 
-    {% if TIP_OF_THE_DAY %}<div class=text-muted>{{ TIP_OF_THE_DAY }}</div>{% endif %}
+    {% if TIP_OF_THE_DAY %}<div class=text-muted>{{ TIP_OF_THE_DAY|safe }}</div>{% endif %}
     <hr>
 
     <footer class="col-md-4">
