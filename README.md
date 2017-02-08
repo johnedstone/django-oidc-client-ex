@@ -7,7 +7,12 @@
 - Based on https://github.com/jhuapl-boss/django-oidc (python 3.x) which in turn is based on https://github.com/marcanpilami/django-oidc (python 2.x).  Behind the scenes, it uses Roland Hedberg's great pyoidc library.
 
 ### Notes on OIDC ###
-- Reference: [link](http://openid.net/connect/)
+- References:
+
+    - [openid.net](http://openid.net/connect/)
+    - [available libraries](http://openid.net/developers/libraries/)
+    - [openid explained](https://connect2id.com/learn/openid-connect)
+
 - What do you need to provide to the OpenID Provider (OP)?
     - Redirection URI(s) 
     - Scope, e.g. openid profile email auth_web
