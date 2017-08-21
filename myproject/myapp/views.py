@@ -1,9 +1,13 @@
 import datetime
+import logging
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic import TemplateView
 from braces.views import LoginRequiredMixin
+
+logger = logging.getLogger('develop_logger')
 
 class CurrentDatetime(TemplateView):
     template_name = "myapp/now.html"
@@ -26,6 +30,12 @@ class Private(LoginRequiredMixin, TemplateView):
 
 
     def get(self, request):
+
+        logger.info('session keys: {}'.format(request.session.keys()))
+        logger.info('access_token: {}'.format(request.session.get('access_token')))
+        logger.info('id_token: {}'.format(request.session.get('id_token')))
+        logger.info('userinfo: {}'.format(request.session.get('userinfo')))
+
         return self.render_to_response(self.get_context_data())
 
     def get_context_data(self, **kwargs):

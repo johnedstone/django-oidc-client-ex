@@ -133,4 +133,57 @@ if ENABLE_WHITENOISE:
     MIDDLEWARE_CLASSES.append('whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[%(levelname)s] [%(name)s.%(module)s.%(funcName)s:%(lineno)d] %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'console_verbose': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'info_verbose': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'console_verbose_prod': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'develop_logger': {
+            'handlers': ['console_verbose'],
+            'level': 'INFO',
+            'filters': ['require_debug_true']
+        },
+        'info_logger': {
+            'handlers': ['info_verbose'],
+            'level': 'INFO',
+        },
+        'prod_logger': {
+            'handlers': ['console_verbose_prod'],
+            'level': 'ERROR',
+            'filters': ['require_debug_false']
+        },
+    }
+}
+
 # vim: ai et ts=4 sw=4 sts=4
