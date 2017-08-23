@@ -31,10 +31,10 @@ class Private(LoginRequiredMixin, TemplateView):
 
     def get(self, request):
 
-        logger.info('session keys: {}'.format(request.session.keys()))
-        logger.info('access_token: {}'.format(request.session.get('access_token')))
-        logger.info('id_token: {}'.format(request.session.get('id_token')))
-        logger.info('userinfo: {}'.format(request.session.get('userinfo')))
+        #logger.info('session keys: {}'.format(request.session.keys()))
+        logger.info('myapp views access_token: {}'.format(request.session.get('access_token', None)))
+        #logger.info('id_token: {}'.format(request.session.get('id_token')))
+        #logger.info('userinfo: {}'.format(request.session.get('userinfo')))
 
         return self.render_to_response(self.get_context_data())
 
