@@ -3,7 +3,8 @@
 - Code works on traditional webserver as well as Origin/Openshift (PaaS) below.
 
 ### Notes django-oidc ###
-- Currently using python 3.4 and django 1.9
+- Prior to 18-Sep-2017: using python 3.4 and django 1.9
+- 18-Sep-2017: Used this workflow with python:3.5 with no need for a custom docker image.
 - Based on https://github.com/jhuapl-boss/django-oidc (python 3.x) which in turn is based on https://github.com/marcanpilami/django-oidc (python 2.x).  Behind the scenes, it uses Roland Hedberg's great pyoidc library.
 
 ### Notes on OIDC ###
