@@ -1,0 +1,24 @@
+
+SOURCE_REPOSITORY_URL='git@github.com:johnedstone/django-oidc-client-ex.git'
+CONTEXT_DIR=myproject
+APPLICATION_DOMAIN=<some value>
+
+PIP_PROXY=<some value>
+DEBUG=off
+SECRET_KEY=<some value>
+ADMIN_URL=ridgway
+
+OP_NAME=<some value>
+SCOPE=<some value>
+AUTHORIZATION_ENDPOINT=<some value>
+TOKEN_ENDPOINT=<some value>
+USERINFO_ENDPOINT=<some value>
+ISSUER=<some value>
+JWKS_URI=<some value>
+CLIENT_ID=<some value>
+CLIENT_SECRET=<some value>
+REDIRECT_URIS=<some value>
+POST_LOGOUT_REDIRECT_URIS=<some value>
+
+GIT_PROJECT_URL='https://github.com/johnedstone/django-oidc-client-ex'
+TIP_OF_THE_DAY='<em>Firfox will prompt you. IE will automatically login (watch the redirection)</em>'

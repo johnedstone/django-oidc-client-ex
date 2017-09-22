@@ -61,7 +61,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: ${NAMESPACE}
-          name: python34-libffi:latest
+          name: python:3.5
         env:
         - name: PIP_PROXY
           value: ${PIP_PROXY}

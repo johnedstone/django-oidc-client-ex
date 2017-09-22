@@ -3,8 +3,8 @@
 - Code works on traditional webserver as well as Origin/Openshift (PaaS) below.
 
 ### Notes django-oidc ###
-- Prior to 18-Sep-2017: using python 3.4 and django 1.9
-- 18-Sep-2017: Used this workflow with python:3.5 with no need for a custom docker image.
+- Prior to 18-Sep-2017: using python 3.4 and django 1.9 and a custom docker image
+- 18-Sep-2017: using python:3.5 with no need for a custom docker image.
 - Based on https://github.com/jhuapl-boss/django-oidc (python 3.x) which in turn is based on https://github.com/marcanpilami/django-oidc (python 2.x).  Behind the scenes, it uses Roland Hedberg's great pyoidc library.
 
 ### Notes on OIDC ###
@@ -42,24 +42,7 @@
 oc secrets new-sshauth sshsecret --ssh-privatekey=$HOME/<path to key>
 oc secret add serviceaccount/builder secrets/sshsecret
 
-oc new-app -f openshift/templates/django.yaml --param="\
-SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL},\
-CONTEXT_DIR=${CONTEXT_DIR},\
-APPLICATION_DOMAIN=${APPLICATION_DOMAIN},\
-PIP_PROXY=${PIP_PROXY},\
-DEBUG=${DEBUG},\
-SECRET_KEY=${SECRET_KEY},\
-ADMIN_URL=${ADMIN_URL},\
-OP_NAME=${OP_NAME},\
-SCOPE=${SCOPE},\
-AUTHORIZATION_ENDPOINT=${AUTHORIZATION_ENDPOINT},\
-TOKEN_ENDPOINT=${TOKEN_ENDPOINT},\
-USERINFO_ENDPOINT=${USERINFO_ENDPOINT},\
-ISSUER=${ISSUER},\
-JWKS_URI=${JWKS_URI},\
-CLIENT_ID=${CLIENT_ID},\
-CLIENT_SECRET=${CLIENT_SECRET},\
-REDIRECT_URIS=${REDIRECT_URIS},\
-POST_LOGOUT_REDIRECT_URIS=${POST_LOGOUT_REDIRECT_URIS},\
-GIT_PROJECT_URL=${GIT_PROJECT_URL}"
+oc new-app --params django_oidc_client_params.txt -f openshift/templates/django-openshift.yaml
+
+
 ```
